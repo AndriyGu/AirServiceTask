@@ -15,12 +15,14 @@ services:
 
   backend:
     container_name: airservice_test_task
-    #image: scanda/airservice
+    # to use from dockerHub
+    image: scanda/airservice:v1
     restart: always
 
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    #to build from sources
+    #build:
+    #  context: ./
+    #  dockerfile: Dockerfile
 
     ports:
       - "8080:8080"
