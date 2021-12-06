@@ -1,0 +1,124 @@
+{
+	"variables": [],
+	"info": {
+		"name": "AirCompanyTest",
+		"_postman_id": "4d58f9bc-7a1b-1495-68eb-fa63459967f8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "5   add new Airplane",
+			"request": {
+				"url": "http://localhost:8080/api/airplane/addNewAirplane",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"string\",\r\n  \"factorySerialNumber\": \"string\",\r\n  \"airCompanyName\": \"\", \r\n  \"numberOfFlights\": 0,\r\n  \"flightDistance\": 0,\r\n  \"fuelCapacity\": 0,\r\n  \"type\": \"string\",\r\n  \"createdAt\": \"2021-12-03\"\r\n}"
+				},
+				"description": "Endpoint to add new Airplane (Could be assign to a company immediately or moved\r\nlater)."
+			},
+			"response": []
+		},
+		{
+			"name": "2   move airplanes between companies",
+			"request": {
+				"url": "http://localhost:8080/api/airplane/changeAirCompanyInAirplane",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"airplaneId\": 3,\r\n  \"airCompanyName\": \"Singapore Airlines\"\r\n}"
+				},
+				"description": "Endpoint to move airplanes between companies (simple endpoint to reassign airplane to\r\nanother company)."
+			},
+			"response": []
+		},
+		{
+			"name": "3   find all Air Company Flights by status",
+			"request": {
+				"url": "http://localhost:8080/api/flight/findAllFlights/ACTIVE/Qatar Airways/1/12\n",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Endpoint to find all Air Company Flights by status (use company name for identification\r\nof Air Company)."
+			},
+			"response": []
+		},
+		{
+			"name": "4   find all Flights in ACTIVE status",
+			"request": {
+				"url": "http://localhost:8080/api/flight/findAllACTIVEFlights/1/11",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Endpoint to find all Flights in ACTIVE status and started more than 24 hours ago."
+			},
+			"response": []
+		},
+		{
+			"name": "6   add new Flight",
+			"request": {
+				"url": "http://localhost:8080/api/flight/addNewFlight",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"airCompanyName\": \"Qatar Airways\",\r\n  \"airplaneName\": \"Dolly\",\r\n  \"departureCountry\": \"string\",\r\n  \"destinationCountry\": \"string\",\r\n  \"distance\": 0,\r\n  \"estimatedFlightTime\": 0,\r\n  \"createdAt\": \"2011-12-03T19:15:20.731Z\"\r\n}"
+				},
+				"description": "Endpoint to add new Flight (set status to PENDING)"
+			},
+			"response": []
+		},
+		{
+			"name": "7   change Flight status",
+			"request": {
+				"url": "http://localhost:8080/api/flight/changeFlightStatus",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"flightId\": 1,\r\n  \"flightStatus\": \"ACTIVE\"\r\n}"
+				},
+				"description": "Endpoint to change Flight status:\r\nif status to change is DELAYED – set delay started at\r\nif status to change is ACTIVE – set started at\r\nif status to change is COMPLETED set ended at"
+			},
+			"response": []
+		},
+		{
+			"name": "find all Flights in COMPLETED status",
+			"request": {
+				"url": "http://localhost:8080/api/flight/findCompletedFlights/1/11",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Endpoint to find all Flights in COMPLETED status and difference between\r\nstarted and ended time is bigger than estimated flight time."
+			},
+			"response": []
+		}
+	]
+}
